@@ -6,6 +6,9 @@
     .about-containers {
       flex-wrap: wrap;
     }
+    #projects .about-containers {
+      grid-template-columns: repeat(3, 1fr);
+    }
     #contact,
     #projects {
       height: fit-content;
@@ -44,6 +47,9 @@
     }
     .about-containers {
       margin-top: 0;
+    }
+    #projects .about-containers {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
   
@@ -99,5 +105,8 @@
     }
     .text-container {
       text-align: justify;
+    }
+    #projects .about-containers {
+      grid-template-columns: 1fr;
     }
   }

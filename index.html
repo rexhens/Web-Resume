@@ -9,6 +9,32 @@
     <link rel="icon" href="./assets/web-icon-2.png">
 </head>
 <body>
+
+<!-- Private repo modal -->
+<div class="modal-overlay" id="privateModal" onclick="closePrivateModal(event)">
+  <div class="modal-card">
+    <span class="modal-lock">🔒</span>
+    <h3>Private Repository</h3>
+    <p>This project's source code is private and not publicly available at this time.</p>
+    <button class="modal-close-btn" onclick="closePrivateModal()">Got it</button>
+  </div>
+</div>
+
+<!-- Lightbox gallery -->
+<div class="lightbox-overlay" id="lightbox" onclick="lightboxOverlayClick(event)">
+  <div class="lightbox-header">
+    <span class="lightbox-title" id="lightboxTitle"></span>
+    <span class="lightbox-counter" id="lightboxCounter"></span>
+    <button class="lightbox-close" onclick="closeLightbox()" title="Close">✕</button>
+  </div>
+  <div class="lightbox-stage">
+    <button class="lightbox-nav" id="lightboxPrev" onclick="lightboxStep(-1)">&#8592;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+    <button class="lightbox-nav" id="lightboxNext" onclick="lightboxStep(1)">&#8594;</button>
+  </div>
+  <div class="lightbox-thumbnails" id="lightboxThumbs"></div>
+</div>
+
 <nav id="desktop-nav">
     <div class="logo">Rexhens Balla</div>
     <div>
@@ -62,10 +88,10 @@
     </section>
 
     <section id="about">
-        <p class="section_text_p1">Get To Know More</p>
-        <h1 class="title">About Me</h1>
+        <p class="section_text_p1 reveal">Get To Know More</p>
+        <h1 class="title reveal">About Me</h1>
         <div class="section-container">
-          <div class="section__pic-container">
+          <div class="section__pic-container reveal reveal-left">
             <img
               src="./assets/about-me-pic.jpg"
               alt="Profile picture"
@@ -74,16 +100,16 @@
           </div>
           <div class="about-details-container">
             <div class="about-containers">
-              <div class="details-container">
+              <div class="details-container reveal">
                 <img
                   src="./assets/experience.png"
                   alt="Experience icon"
                   class="icon"
                 />
                 <h3>Experience</h3>
-                <p>1+ years <br />Fullstack Development</p>
+                <p>3+ years <br />Fullstack Development <br />Creating & maintaining banking systems</p>
               </div>
-              <div class="details-container">
+              <div class="details-container reveal">
                 <img
                   src="./assets/education.png"
                   alt="Education icon"
@@ -93,7 +119,7 @@
                 <p>B.Sc. Software Engineering</p>
               </div>
             </div>
-            <div class="text-container">
+            <div class="text-container reveal">
               <p>
                 I am a versatile full-stack developer currently freelancing and gaining hands-on experience with real-life projects. I specialize in creating stylish, modern, and responsive websites with complete functionality, ensuring an engaging and seamless user experience. My expertise spans both front-end and back-end development, allowing me to deliver comprehensive solutions that meet clients' needs and exceed their expectations.
               </p>
@@ -109,10 +135,10 @@
       </section>
 
     <section id="experience">
-        <p class="section_text_p1">Explore My</p>
-        <h1 class="title">Experience</h1>
+        <p class="section_text_p1 reveal">Explore My</p>
+        <h1 class="title reveal">Experience</h1>
         <div class="about-containers">
-          <div class="details-container">
+          <div class="details-container reveal reveal-left">
             <h2 class="experience-sub-title">Backend Developement</h2>
             <div class="article-container">
               <article>
@@ -160,7 +186,7 @@
             
             </div>
           </div>
-          <div class="details-container">
+          <div class="details-container reveal reveal-right">
             <h2 class="experience-sub-title">FrontEnd Developement</h2>
             <div class="article-container">
               <article>
@@ -221,90 +247,77 @@
       <h1 class="title">Projects</h1>
       <div class="experience-details-container">
         <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img src="./assets/car-project.png" alt="Project 1" class="project-img" id="car-img"/>
+          <div class="details-container color-container reveal">
+            <div class="project-img-wrapper" onclick="openLightbox('Albest', this)"
+              data-gallery="./assets/albest-home.png,./assets/albest-home-2.png,./assets/albest-admin.png,./assets/albest-articles.png,./assets/albest-news.png,./assets/albest-finance.png,./assets/albest-statistics.png,./assets/albest-footer.png">
+              <img src="./assets/albest-home.png" alt="Albest" class="project-img" />
+            </div>
+            <h2 class="experience-sub-title project-title">Albest</h2>
+            <div class="btn-container">
+              <button class="btn btn-color-2 project-btn" onclick="openPrivateModal()">Github</button>
+              <button class="btn btn-color-2 project-btn" onclick="window.open('http://198.96.88.67/','_blank')">Live Demo</button>
+            </div>
+          </div>
+          <div class="details-container color-container reveal">
+            <div class="project-img-wrapper" onclick="openLightbox('TiLearn', this)"
+              data-gallery="./assets/tilearn-home.png,./assets/tilearn-home1.png,./assets/tilearn-home3.png,./assets/tilearn-thesis.png,./assets/tilearn-add-thesis.png,./assets/tilearn-profile.png">
+              <img src="./assets/tilearn-home.png" alt="TiLearn" class="project-img" />
+            </div>
+            <h2 class="experience-sub-title project-title">TiLearn</h2>
+            <div class="btn-container">
+              <button class="btn btn-color-2 project-btn" onclick="openPrivateModal()">Github</button>
+              <button class="btn btn-color-2 project-btn" onclick="window.open('http://198.96.88.67:8080/','_blank')">Live Demo</button>
+            </div>
+          </div>
+          <div class="details-container color-container reveal">
+            <div class="project-img-wrapper" onclick="openLightbox('FitTrack', this)"
+              data-gallery="./assets/fittrack-cover.png,./assets/fittrack-login.png,./assets/fittrack-register.png,./assets/fittrack-dashboard.png,./assets/fittrack-user-dash.png,./assets/fittrack-goals.png,./assets/fittrack-metrics.png,./assets/fittrack-chatbot.png,./assets/fittrack-workout.png,./assets/fittrack-progress.png">
+              <img src="./assets/fittrack-cover.png" alt="FitTrack" class="project-img" />
+            </div>
+            <h2 class="experience-sub-title project-title">FitTrack</h2>
+            <div class="btn-container">
+              <button class="btn btn-color-2 project-btn" onclick="openPrivateModal()">Github</button>
+              <button class="btn btn-color-2 project-btn" onclick="location.href='#'">Live Demo</button>
+            </div>
+          </div>
+          <div class="details-container color-container reveal">
+            <div class="project-img-wrapper">
+              <img src="./assets/car-project.png" alt="RentAl Managment" class="project-img" id="car-img"/>
             </div>
             <h2 class="experience-sub-title project-title">RentAl Managment</h2>
             <div class="btn-container">
-              <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/rexhens/React-Rental-MS-Demo','_blank')">
-                Github
-              </button>
-              <button class="btn btn-color-2 project-btn" onclick="window.open('https://rental-demo-app.netlify.app/admin','_blank')">
-                Live Demo
-              </button>
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/rexhens/React-Rental-MS-Demo','_blank')">Github</button>
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://rental-demo-app.netlify.app/admin','_blank')">Live Demo</button>
             </div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/pr5.png"
-                alt="Project 1"
-                class="project-img"
-              />
+          <div class="details-container color-container reveal">
+            <div class="project-img-wrapper">
+              <img src="./assets/pr5.png" alt="Psychology Clinic" class="project-img" />
             </div>
             <h2 class="experience-sub-title project-title">Psychology Clinic</h2>
             <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://github.com/rexhens/Psychology-Clinic','_blank')"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://psychology-clinic.netlify.app/clients','_blank')"
-              >
-                Live Demo
-              </button>
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/rexhens/Psychology-Clinic','_blank')">Github</button>
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://psychology-clinic.netlify.app/clients','_blank')">Live Demo</button>
             </div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/pr2.png"
-                alt="Project 2"
-                class="project-img"
-              />
+          <div class="details-container color-container reveal">
+            <div class="project-img-wrapper">
+              <img src="./assets/pr2.png" alt="Fole DMS" class="project-img" />
             </div>
             <h2 class="experience-sub-title project-title">Fole DMS</h2>
             <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://github.com/EnderDE77/fole-dbs','_blank')"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='#'"
-              >
-                Live Demo
-              </button>
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/EnderDE77/fole-dbs','_blank')">Github</button>
+              <button class="btn btn-color-2 project-btn" onclick="location.href='#'">Live Demo</button>
             </div>
           </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/pr3.png"
-                alt="Project 3"
-                class="project-img"
-              />
+          <div class="details-container color-container reveal">
+            <div class="project-img-wrapper">
+              <img src="./assets/pr3.png" alt="BobTheBuilder CC" class="project-img" />
             </div>
             <h2 class="experience-sub-title project-title">BobTheBuilder CC</h2>
             <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/rexhens/Construction_Company'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='#'"
-              >
-                Live Demo
-              </button>
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/rexhens/Construction_Company','_blank')">Github</button>
+              <button class="btn btn-color-2 project-btn" onclick="location.href='#'">Live Demo</button>
             </div>
           </div>
         </div>
